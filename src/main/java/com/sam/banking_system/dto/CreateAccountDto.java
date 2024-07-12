@@ -5,15 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto {
-    private Long id;
+public class CreateAccountDto {
+    private Long userId;
     private String accountNumber;
-    private BigDecimal balance;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private BigDecimal initialDeposit;
 }
