@@ -40,9 +40,9 @@ Banking system(Simple) built with Spring Boot, React, and MySQL. It includes use
    cd banking-system
    
 3. Update MySQL configuration in src/main/resources/application.properties:
-    spring.datasource.url=jdbc:mysql://localhost:3306/banking_system
+    spring.datasource.url=jdbc:mysql://localhost:3306/your_schema_name
     spring.datasource.username=root
-    spring.datasource.password=yourpassword
+    spring.datasource.password=your-password
     spring.jpa.hibernate.ddl-auto=update
   
 5. Create the database schema:
@@ -54,7 +54,7 @@ Banking system(Simple) built with Spring Boot, React, and MySQL. It includes use
 7.Run the application:
     mvn spring-boot:run
    
-###API Endpoints 
+-API Endpoints- 
 Postman(Optional)
 User Registration
   URL: /api/auth
@@ -63,7 +63,7 @@ User Registration
     {
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
+      "email": "samuelkhiba3@gmail.com",
       "password": "password",
       "role": "USER"
    }
@@ -73,7 +73,7 @@ User Registration
       "id": 1,
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
+      "email": "samuelkhiba3@gmail.com",
       "role": "USER"
   }
 
@@ -82,7 +82,7 @@ User Authentication
   Method: POST
   Request Body:
     {
-      "username": "john.doe@example.com",
+      "username": "samuelkhiba3@gmail.com",
       "password": "password"
     }
 
@@ -110,8 +110,10 @@ Create Account
       "updatedDate": "2023-07-12T00:00:00"
     }
 
-###Caution
--Make sure to update any placeholder text (like `your-username` and `yourpassword`) with actual values relevant to your project.
--This project is under-development, more fetures to be added
+##Caution
+-Make sure to update any placeholder text (like `your-password`) 
+-This project is under-development, more fetures to be added.
+
+!!Have wonderful day!!
 
 
