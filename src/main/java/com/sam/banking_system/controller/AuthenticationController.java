@@ -6,7 +6,6 @@ import com.sam.banking_system.dto.CreateUserDto;
 import com.sam.banking_system.dto.UserDto;
 import com.sam.banking_system.service.BlacklistedTokenService;
 import com.sam.banking_system.service.CustomUserDetailsService;
-import com.sam.banking_system.service.UserService;
 import com.sam.banking_system.security.jwt.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +22,12 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtTokenUtil;
     private final CustomUserDetailsService customUserDetailsService;
-    private final UserService userService;
     private final BlacklistedTokenService blacklistedTokenService;
     private final UserController userController;
 
@@ -38,14 +37,12 @@ public class AuthenticationController {
      * @param authenticationManager   the authentication manager
      * @param jwtTokenUtil            the JWT token utility
      * @param customUserDetailsService the custom user details service
-     * @param userService             the user service
      * @param blacklistedTokenService the Blacklisted Token Service
      */
-    public AuthenticationController(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil, CustomUserDetailsService customUserDetailsService, UserService userService, BlacklistedTokenService blacklistedTokenService, UserController userController) {
+    public AuthenticationController(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil, CustomUserDetailsService customUserDetailsService, BlacklistedTokenService blacklistedTokenService, UserController userController) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
         this.customUserDetailsService = customUserDetailsService;
-        this.userService = userService;
         this.blacklistedTokenService = blacklistedTokenService;
         this.userController = userController;
     }
