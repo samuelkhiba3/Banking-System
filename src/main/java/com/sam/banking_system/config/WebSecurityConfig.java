@@ -79,8 +79,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         request -> request
                                 .requestMatchers("/api/auth/**").permitAll()
-                                // UserController matchers
-                                .requestMatchers(HttpMethod.GET, "/api/users/{id}").hasAuthority("ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api/users/{id}").hasAnyAuthority("CUSTOMER", "ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api/accounts/{userId}").hasAuthority("CUSTOMER")
                                 .anyRequest().authenticated()
                 )
                 .userDetailsService(customUserDetailsService)

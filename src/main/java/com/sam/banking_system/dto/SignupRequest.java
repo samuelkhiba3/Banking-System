@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserDto {
+public class SignupRequest {
     private String firstName;
     private String lastName;
     private String email;

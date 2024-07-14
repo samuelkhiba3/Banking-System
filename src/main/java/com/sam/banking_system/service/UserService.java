@@ -1,6 +1,5 @@
 package com.sam.banking_system.service;
 
-import com.sam.banking_system.dto.CreateUserDto;
 import com.sam.banking_system.dto.UserDto;
 import com.sam.banking_system.mapper.UserMapper;
 import com.sam.banking_system.model.User;
@@ -18,10 +17,20 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDto createUser(CreateUserDto createUserDto) {
-        createUserDto.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
-        User user = UserMapper.dtoToEntity(createUserDto);
+    public UserDto getUserById(Long userId){
+        User user = userRepository.getReferenceById(userId);
+        return UserMapper.entityToDto(user);
+    }
+
+    public UserDto createUser(User user){
         User savedUser = userRepository.save(user);
         return UserMapper.entityToDto(savedUser);
+    }
+
+    public String updatePassword(Long userId, String password) {
+        User user = userRepository.getReferenceById(userId);
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+        return "Password successfully updated!";
     }
 }

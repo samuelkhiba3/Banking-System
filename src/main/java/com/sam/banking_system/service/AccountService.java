@@ -11,6 +11,7 @@ import com.sam.banking_system.utility.AccountUtil;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -33,6 +34,13 @@ public class AccountService {
         user.getAccounts().add(account);
         userRepository.save(user);
         return AccountMapper.entityToDto(account);
+    }
+
+    public List<AccountDto> getAccounts(Long userId){
+        return accountRepository.findByUserId(userId)
+                .stream()
+                .map(AccountMapper::entityToDto)
+                .toList();
     }
 
 }

@@ -1,13 +1,10 @@
 package com.sam.banking_system.controller;
 
-import com.sam.banking_system.dto.CreateUserDto;
 import com.sam.banking_system.dto.UserDto;
 import com.sam.banking_system.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/users")
@@ -19,10 +16,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody CreateUserDto createUserDto) {
-        UserDto userDto = userService.createUser(createUserDto);
-        return ResponseEntity.ok(userDto);
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long userId){
+        return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
     }
 
+    @PatchMapping("/password/{userId}")
+    public ResponseEntity<String> updatePassword(@PathVariable Long userId,@RequestBody String password){
+        return new ResponseEntity<>(userService.updatePassword(userId,password), HttpStatus.OK);
+    }
 }
